@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivysettings>
+    <settings defaultCache="${ivy.downloader.cache}" defaultResolver="local-Archiva" />
+     
+    <resolvers>
+        <chain name="local-Archiva">
+            <url name="http://maven.clapper.org./org/clapper/javautil/3.1.1/">
+                <ivy pattern="http://maven.clapper.org./org/clapper/javautil/3.1.1/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+                <artifact pattern="http://maven.clapper.org./org/clapper/javautil/3.1.1/[organisation]/[module]/[revision]/[artifact]-[revision].[ext]" />
+            </url>
+        </chain>
+    </resolvers>
+</ivysettings>

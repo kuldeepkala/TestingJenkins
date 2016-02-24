@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite name="New Session (4).CrestShop-Test Suite" tests="2" time="73.255">
+<testcase name="CrestShop Test case" status="Fail" time="48.263">
+<error message="Fail">
+TypeTextOnEditBox-Object not found; TypeTextOnEditBox-Object not found; Click-Object not found; AssertTextPresent-Not verified; AssertTextPresent-Not verified;
+</error>
+</testcase>
+<testcase name="Scenario Outline: Login into application" status="Fail" time="24.191">
+<error message="Fail">AssertTextPresent-Not verified;</error>
+</testcase>
+</testsuite>

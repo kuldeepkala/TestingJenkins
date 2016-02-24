@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project name="CommonTargets">
+
+	<target name="clean">
+		<delete dir="bin" />
+		<delete dir="build" />
+
+		<mkdir dir="bin" />
+		<mkdir dir="build" />
+	</target>
+
+	<target name="init" depends="clean">
+		<echo>${ant.version}</echo>
+		<echo>Java: ${ant.java.version} @ ${java.home}</echo>
+
+		<tstamp>
+			<format property="TODAY" pattern="d-MMMM-yyyy" locale="en,GB" />
+		</tstamp>
+	</target>
+<!--  Here will be our IVY 
+
+<ivy:settings file="${basedir}/ivy-settings.xml" />
+
+
+  -->
+	<target name="compile" depends="init">
+		<mkdir dir="bin" />
+		<copy includeemptydirs="false" todir="bin">
+			<fileset dir="src">
+				<exclude name="**/*.java" />
+			</fileset>
+		</copy>
+		<javac compiler="modern" debug="true" debuglevel="${debuglevel}"
+			destdir="bin" includeantruntime="false" source="1.7" target="1.7">
+			<src path="src" />
+			<classpath refid="project.classpath" />
+		</javac>
+	</target>
+
+	<target name="find_revision">
+		<echo>Finding SVN revision of ${basedir}</echo>
+		<!-- find out revision number of HEAD, need svn.exe installed on local 
+			machine -->
+		<exec executable="svn" failonerror="true" outputproperty="svn-version">
+			<arg line="info &quot;${basedir}&quot;" />
+			<redirector>
+				<outputfilterchain>
+					<linecontains>
+						<contains value="Last Changed Rev: " />
+					</linecontains>
+					<tokenfilter>
+						<replacestring from="Last Changed Rev: " to="" />
+					</tokenfilter>
+				</outputfilterchain>
+			</redirector>
+		</exec>
+
+		<echo>Project is at revision: ${svn-version}</echo>
+	</target>
+
+	<target name="find_base">
+		<!-- http://stackoverflow.com/a/9887367/1043824 -->
+		<pathconvert property="file.list" pathsep="${line.separator}">
+			<fileset dir="${basedir}\..\PluginBase\build">
+				<include name="opkey-pluginbase-*.jar" />
+			</fileset>
+		</pathconvert>
+
+
+		<!-- extract a single target file from the list -->
+		<loadresource property="base.file.name">
+			<string value="${file.list}" />
+			<filterchain>
+				<!-- add your own logic to deal with multiple matches -->
+				<headfilter lines="1" />
+				<replaceregex pattern="^.*opkey-pluginbase-" />
+				<replaceregex pattern=".jar$" />
+			</filterchain>
+		</loadresource>
+
+
+		<loadproperties>
+			<zipentry
+				zipfile="${basedir}\..\PluginBase\build\opkey-pluginbase-${base.file.name}.jar"
+				name="META-INF/MANIFEST.MF" />
+		</loadproperties>
+
+
+		<!-- print the result -->
+		<echo message="Plugin-Base jar Version: ${base.file.name}" />
+		<property name="base.jar.version" value="${base.file.name}" />
+
+		<echo>Plugin-Base impl. version ${Implementation-Version}</echo>
+		<property name="base.impl.version" value="${Implementation-Version}" />
+	</target>
+
+
+</project>

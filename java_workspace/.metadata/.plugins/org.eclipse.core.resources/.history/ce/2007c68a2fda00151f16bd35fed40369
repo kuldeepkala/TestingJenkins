@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+
+<ivy-module version="2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:noNamespaceSchemaLocation="http://ant.apache.org/ivy/schemas/ivy.xsd">
+    <info
+        organisation=""
+        module=""
+        status="integration">
+	</info>
+	  <dependency org="asm" name="asm-all" rev="3.1" transitive="false"/>
+	<dependency org="org.clapper" name="javautil" rev="3.1.2" />
+	<depensdency org="org.xerial" name="sqlite-jdbc" rev="3.7.2" transitive="false"/>
+</ivy-module>

@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:Opkey="http://opkey.crestechglobal.com/xml/functioncall" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://opkey.crestechglobal.com/xml/functioncall" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="FunctionCall">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="StepNumber" type="xs:long" />
+        <xs:element name="SnapshotRequired" type="xs:boolean" />
+        <xs:element name="Function">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="OutputParameters">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="OutputParameter" minOccurs="1" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:attribute name="parameterName" type="xs:string" use="required" />
+                        <xs:attribute name="dataType" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>              
+            </xs:sequence>            
+            <xs:attribute name="methodName" type="xs:string" use="required" />
+            <xs:attribute name="callTimeoutInMillis" type="xs:int" use="required" />                                   
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ObjectArguments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ObjectArgument" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element ref="Opkey:Object" minOccurs="1" maxOccurs="1" />
+                  </xs:sequence>
+                  <xs:attribute name="argumentName" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="DataArguments">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" minOccurs="0" name="DataArgument">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="argumentName" type="xs:string" use="required" />
+                      <xs:attribute name="dataType" type="xs:string" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="MobilityArguments">
+          <xs:complexType>
+            <xs:sequence>
+
+              <xs:element name="MobileDeviceArguments">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Device" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="Opkey:MobileDevice" minOccurs="1" maxOccurs="1" />
+                        </xs:sequence>
+                        <xs:attribute name="argumentName" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="MobileApplicationArguments">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Application" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element ref="Opkey:MobileApplication" minOccurs="1" maxOccurs="1" />
+                        </xs:sequence>
+                        <xs:attribute name="argumentName" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Object">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="UseSmartIdentification" type="xs:boolean" />
+        <xs:element name="Properties">
+          <xs:complexType>
+
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="Property" minOccurs="0">
+                <xs:complexType>
+                  <xs:simpleContent>
+                    <xs:extension base="xs:string">
+                      <xs:attribute name="Name" type="xs:string" use="required" />
+                      <xs:attribute name="DataType" type="xs:string" use="required" />
+                      <xs:attribute name="RegularExpression" type="xs:boolean" use="required" />
+                      <xs:attribute name="IsUsed" type="xs:boolean" use="required" />
+                      <xs:attribute name="PluginSpecification" type="xs:string" use="required" />
+                    </xs:extension>
+                  </xs:simpleContent>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ChildObject">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element ref="Opkey:Object" minOccurs="0" />
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+      <xs:attribute name="OpKeyType" type="xs:string" use="required" />
+      <xs:attribute name="LogicalName" type="xs:string" use="required" />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MobileDevice">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DisplayName" type="xs:string" />
+        <xs:element name="SerialNumber" type="xs:string" />
+        <xs:element name="OperatingSystem" type="xs:string" />
+        <xs:element name="Version" type="xs:string" />
+        <xs:element name="IPAddress" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="MobileApplication">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="DisplayName" type="xs:string" />
+        <xs:element name="IsHybrid" type="xs:boolean" />
+        <xs:element name="Package" type="xs:string" />
+        <xs:element name="MainActivity" type="xs:string" />
+        <xs:element name="WaitForActivity" type="xs:string" />
+        <xs:element name="OperatingSystem" type="xs:string" />
+        <xs:element name="ApplicationPath" type="xs:string" />
+        <xs:element name="InstrumentedAppPath" type="xs:string" />
+        <xs:element name="ListenerPort" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

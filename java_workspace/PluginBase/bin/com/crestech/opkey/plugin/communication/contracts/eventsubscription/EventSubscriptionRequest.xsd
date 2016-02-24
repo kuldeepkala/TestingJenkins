@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:Opkey="http://opkey.crestechglobal.com/xml/EventSubscriptionRequest" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://opkey.crestechglobal.com/xml/EventSubscriptionRequest" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EventSubscriptionRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="subscriber">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="publisher">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="event">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="name" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="parameters">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element minOccurs="0" maxOccurs="unbounded" name="parameter">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="name" type="xs:string" />
+                    <xs:element name="datatype" type="xs:string" />
+                    <xs:element name="value" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="paramid" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

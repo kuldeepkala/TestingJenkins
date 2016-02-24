@@ -1,0 +1,10 @@
+package readkeybasic;
+
+public class Classic extends readkeyAdvance{
+
+	public static void main(String[] args) {
+		String fileName = "D://testcase.txt"; 
+		printWithoutduplicateStringInArray(findStringofFirstSqBreaket(readFileAndMakeItList(fileName)));
+	}
+
+}

@@ -1,0 +1,59 @@
+package readkeybasic;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
+public class mainclass {
+	/**
+	 * Kuldeep Own this class ... haha this was for just docs
+	 * @param args
+	 */
+	String fileName = "D://testcase.txt"; // here some global not be part of chaos
+	
+	List<String> list_of_line = new ArrayList<>();// yeyeye we need it
+	List<String> list_of_String = new ArrayList<>();
+public  void readFileAndMakeItList()
+{
+	
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName),Charset.forName("Cp1252"))) {
+				//br returns as stream and convert it into a List
+				list_of_line = br.lines().collect(Collectors.toList());
+
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+			list_of_line.forEach(System.out::println);
+
+}
+
+public String findStringofFirstSqBreaket()
+{
+	
+	return null;
+}
+
+public void duplicateStringInArray()
+{
+	
+}
+
+		public static void main(String args[]) 
+		{
+		mainclass mc=new mainclass();
+		mc.readFileAndMakeItList();
+		}
+		
+}//end of classes
+
+			
+
+		
+
+	
+
+

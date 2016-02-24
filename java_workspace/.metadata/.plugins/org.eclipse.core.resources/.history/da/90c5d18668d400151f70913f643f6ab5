@@ -1,0 +1,14 @@
+package helloword;
+
+import java.util.ArrayList;
+
+public class StoreByteInArrayList {
+	public static ArrayList<String> arraylists(String S) {
+		ArrayList<String> arrlist = new ArrayList<String>();
+		for (String string : arrlist) {
+		 arrlist.add(S);
+		 System.out.print(">>"+S);
+		}
+		return arrlist;
+	}
+}

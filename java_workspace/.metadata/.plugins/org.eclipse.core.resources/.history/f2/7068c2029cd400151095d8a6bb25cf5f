@@ -1,0 +1,57 @@
+
+package excelwrites;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+@SuppressWarnings("unused")
+public class Book {
+	private static final String FILE_PATH = "C:\\Users\\shipra.chauhan\\Documents\\";
+	// We are making use of a single instance to prevent multiple write access
+	// to same file.
+	private static final Book INSTANCE = new Book();
+
+	public static Book getInstance() {
+		return INSTANCE;
+	}
+
+	private Book() {
+	}
+
+	public static void main(String args[]) {
+
+		writeListToExcel("date");
+
+	}
+
+	public static void writeListToExcel(String s) {
+
+		// Using XSSF for xlsx format, for xls use HSSF
+		Workbook workbook = new XSSFWorkbook();
+		Sheet sSheet = workbook.createSheet("Students");
+		int rowIndex = 0;
+		int cellIndex = 0;
+		Row row = sSheet.createRow(rowIndex++);
+		row.createCell(cellIndex++).setCellValue(s);
+
+		// write this workbook in excel file.
+		try {
+			FileOutputStream fos = new FileOutputStream(FILE_PATH);
+			workbook.write(fos);
+			fos.close();
+			System.out.println(FILE_PATH + " is successfully written");
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+}

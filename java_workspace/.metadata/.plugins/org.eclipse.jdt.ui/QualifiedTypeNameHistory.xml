@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="java.util.concurrent.ThreadLocalRandom"/>
+<fullyQualifiedTypeName name="javax.swing.plaf.synth.SynthOptionPaneUI"/>
+<fullyQualifiedTypeName name="java.lang.reflect.Array"/>
+<fullyQualifiedTypeName name="org.xml.sax.Parser"/>
+<fullyQualifiedTypeName name="java.util.Scanner"/>
+<fullyQualifiedTypeName name="javaassign.replacer_class"/>
+<fullyQualifiedTypeName name="java.nio.file.Paths"/>
+<fullyQualifiedTypeName name="java.nio.file.PathMatcher"/>
+<fullyQualifiedTypeName name="java.nio.file.Path"/>
+<fullyQualifiedTypeName name="java.nio.file.FileSystems"/>
+<fullyQualifiedTypeName name="java.util.TimerTask"/>
+<fullyQualifiedTypeName name="java.util.Timer"/>
+<fullyQualifiedTypeName name="helloword.hello2"/>
+<fullyQualifiedTypeName name="helloword.hello21"/>
+<fullyQualifiedTypeName name="helloword.hello23"/>
+<fullyQualifiedTypeName name="helloword.helloword"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="java.io.File"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.InputStreamReader"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Workbook"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Sheet"/>
+<fullyQualifiedTypeName name="org.apache.poi.hssf.usermodel.HSSFWorkbook"/>
+<fullyQualifiedTypeName name="java.awt.List"/>
+<fullyQualifiedTypeName name="org.apache.poi.ss.usermodel.Row"/>
+<fullyQualifiedTypeName name="java.io.FileOutputStream"/>
+<fullyQualifiedTypeName name="java.util.concurrent.TimeUnit"/>
+<fullyQualifiedTypeName name="java.io.BufferedReader"/>
+<fullyQualifiedTypeName name="java.nio.file.Files"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="readkeybasic.mainclass"/>
+<fullyQualifiedTypeName name="java.nio.charset.Charset"/>
+<fullyQualifiedTypeName name="java.util.Set"/>
+<fullyQualifiedTypeName name="java.util.LinkedHashSet"/>
+<fullyQualifiedTypeName name="readkeybasic.readkeyAdvance"/>
+<fullyQualifiedTypeName name="java.lang.System"/>
+</qualifiedTypeNameHistroy>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:opkey="http://opkey.crestechglobal.com/xml/EventNotificationMessage" attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://opkey.crestechglobal.com/xml/EventNotificationMessage" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="EventNotificationMessage">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="event">
+          <xs:complexType>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="parameter" maxOccurs="unbounded" minOccurs="0"> 
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="value" type="xs:string" />
+            </xs:sequence>
+            <xs:attribute name="id" type="xs:string" use="required" />
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

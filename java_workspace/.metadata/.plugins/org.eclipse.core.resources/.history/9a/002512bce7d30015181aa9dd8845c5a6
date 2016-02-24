@@ -1,0 +1,29 @@
+package helloword;
+
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class helloword extends TimerTask
+{
+	@Override
+	public void run() {
+		maini();
+	}
+	public static void main(String...s)
+	{
+		 Timer timer = new Timer();
+		 timer.schedule(new helloword(), 1, 5000);
+		 
+	}
+public static void maini() {
+	
+	 for(;;){
+	       new helloword();
+	       new hello2();
+	       
+	       System.out.print("-");
+	      // maini();
+	       }
+	 
+}
+}

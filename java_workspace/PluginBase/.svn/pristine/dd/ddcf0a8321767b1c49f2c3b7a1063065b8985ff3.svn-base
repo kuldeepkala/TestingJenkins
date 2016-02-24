@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project default="default">
+
+	<!-- Set variables for build directories -->
+	<property name="major.minor" value="1.3" />
+	
+	<property name="jar.name" value="opkey-pluginbase-${major.minor}.jar" />
+	<tstamp>
+		<format property="TODAY" pattern="d-MMMM-yyyy" locale="en,GB"/>
+	</tstamp>
+
+
+	<target name="default">
+		<echo>${ant.version}</echo>
+		<echo message="Cleaning and building the project" />
+
+		<antcall target="clean" />
+		<antcall target="build" />
+	</target>
+
+
+
+	<target name="clean">
+		<echo message="Deleting existing build folder" />
+		<delete dir="build" />
+		<mkdir dir="build" />
+	</target>
+
+
+
+	<target name="build" depends="find_revision">
+
+		<echo message="creating jar of the plugin" />
+		<property name="base.version" value="${major.minor}.0.${svnrev}" />
+
+		<jar destfile="build/${jar.name}" basedir="bin">
+			<manifest>
+				<attribute name="Built-By" value="${user.name}" />
+
+				<attribute name="Specification-Title" value="OpKey Plugin" />
+				<attribute name="Specification-Vendor" value="CresTech" />
+
+				<attribute name="Implementation-Title" value="OpKey Plugin Base" />
+				<attribute name="Implementation-Version" value="${base.version}" />
+				<attribute name="Implementation-Vendor" value="CresTech" />
+
+				<attribute name="Class-Path" value="sqlite-jdbc-3.7.2.jar javautil-3.1.1.jar asm-all-3.1.jar">
+				</attribute>
+				<attribute name="Built-Date" value="${TODAY}"/>
+			</manifest>
+		</jar>
+
+
+
+		<!-- now copy all the dependencies -->
+		<echo message="Copying required libraries and files" />
+		<copy todir="build">
+			<fileset dir="lib" />
+		</copy>
+		
+		<echo>Base jar:       ${jar.name}</echo>
+		<echo>Base Version:   ${base.version}</echo>
+
+	</target>
+
+
+
+
+	<target name="find_revision">
+		<echo>Finding SVN revision of ${basedir}</echo>
+
+		<!-- find out revision number of HEAD, need svnversion.exe installed on local machine -->
+		<exec executable="svnversion" failonerror="true" outputproperty="svnrev">
+			<arg line="&quot;${basedir}&quot; -nq" />
+			<!--produces output like '601:607MS' or simply '607'-->
+			<redirector>
+				<outputfilterchain>
+					<tokenfilter>
+						<!--remove the leading lower version number (if present)-->
+						<replaceregex pattern="^[0-9]+:" replace="" />
+						<!--remove the trailing MS etc (if present)-->
+						<replaceregex pattern="[^0-9]+" replace="" />
+					</tokenfilter>
+				</outputfilterchain>
+			</redirector>
+		</exec>
+
+		<echo>Project is at revision: ${svnrev}</echo>
+	</target>
+</project>

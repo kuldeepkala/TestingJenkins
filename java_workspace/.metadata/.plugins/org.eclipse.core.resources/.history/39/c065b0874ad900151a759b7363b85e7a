@@ -1,0 +1,3 @@
+# Ant Ivy Setting
+ivy.downloader.cache=${user.home}/.ivy2/download-cache
+ivy.settings.file=${basedir}/ivy-settings.xml

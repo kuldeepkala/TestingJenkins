@@ -1,0 +1,287 @@
+/*
+
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package javaapplication1;
+
+/**
+ *
+ * @author Chirag
+ */
+public class JavaApplication1 {
+
+    /**
+     * @param args the command line arguments
+     */
+    public static void main(String[] args) {
+        int triangle_levels=15;
+        // TODO code application logic here
+       int j = triangle_levels - 1; // triangle_levels is some int you can make 5, but this 
+                             // is more generic
+        
+for(int i = 0; i < triangle_levels; j--, i++) {
+    System.out.println("%"+j+"s");
+    System.out.println("");
+    System.out.println("%0")
+            + (i+1) + "d", 0).replace("0", "* "));
+}
+    }
+    
+}
+
+
+-----------------------------------------------------------------------
+
+public String printTriangle (int count) {
+    if( count <= 0 ) return "";
+
+    String p = printTriangle(count - 1);
+    p = p + "*";
+    System.out.println(p);
+
+    return p;
+ }
+ 
+ 
+ void printStars(int count) {
+    if (count == 0) return;
+
+    System.out.print("*");
+    printStars(count - 1);
+}
+printStars(5); 
+--------------------------------------------------------------------------------------------------------------------------------
+ File f = new File(path);
+
+    System.out.println(f.getParent());// 
+    System.out.println(f.getName());  //
+    
+    for(String fileNameStr: filesList){
+  File file = new File(fileNameStr);
+  String dir = file.getParent().substring(file.getParent().lastIndexOf(File.separator) + 1);//page01
+  String fileName = f.getName();
+  if(fileName.indexOf(".")!=-1){
+     fileName = fileName.substring(0,fileName.lastIndexOf("."));
+   }
+}
+-------------------------------------------------------------------------------
+File file = new File("d:/test/test.java");
+File parentDir = file.getParentFile(); // to get the parent dir 
+String parentDirName = file.getParent(); // to get the parent dir name
+
+Path path = Paths.get("d:/test/test.java"); 
+Path parent = path.getParent();
+//getFileName() returns file name for 
+//files and dir name for directories
+String parentDirName = file.getFileName().toString()
+
+
+----------------------------------------------------------------
+File parentDir = file.getAbsoluteFile().getParentFile();
+String parentDirName = file.getAbsoluteFile().getParent();
+
+File file = new File("test.java");
+---------------------------------------------------------------
+
+import java.io.*;
+
+class Main {
+   public static void main(String[] args) {
+      File dir = new File("C:");
+      FilenameFilter filter = new FilenameFilter() {
+         public boolean accept
+         (File dir, String name) {
+            return name.startsWith("b");
+        }
+      };
+      String[] children = dir.list(filter);
+      if (children == null) {
+         System.out.println("Either dir does not 
+         exist or is not a directory");
+      } 
+      else {
+         for (int i=0; i7lt; children.length; i++) {
+            String filename = children[i];
+            System.out.println(filename);
+         }
+      } 
+   }
+}
+
+
+-0--------------------------------------
+
+import java.io.*;
+import java.util.*;
+class FindFile 
+{
+    public void findFile(String name,File file)
+    {
+        File[] list = file.listFiles();
+        if(list!=null)
+        for (File fil : list)
+        {
+            if (fil.isDirectory())
+            {
+                findFile(name,fil);
+            }
+            else if (name.equalsIgnoreCase(fil.getName()))
+            {
+                System.out.println(fil.getParentFile());
+            }
+        }
+    }
+    public static void main(String[] args) 
+    {
+        FindFile ff = new FindFile();
+        Scanner scan = new Scanner(System.in);
+        System.out.println("Enter the file to be searched.. " );
+        String name = scan.next();
+        System.out.println("Enter the directory where to search ");
+        String directory = scan.next();
+        ff.findFile(name,new File(directory));
+    }
+}
+
+
+-------------------------------------------------------------------------
+public class DynamicFileNameFilter implements FilenameFilter {
+
+    private String comparingname;
+
+    public DynamicFileNameFilter(String comparingName){
+        this.comparingname = comparingName;
+    }
+
+    @Override
+    public boolean accept(File dir, String name) {
+        File file = new File(name);
+
+        if (name.equals(comparingname) && !file.isDirectory())
+            return false;
+
+        else
+            return true;
+    }
+
+}
+
+then you use where you need:
+
+FilenameFilter fileNameFilter = new DynamicFileNameFilter("thedynamicNameorpatternYouAreSearchinfor");
+File[] matchingFiles = dir.listFiles(fileNameFilter);
+
+
+---------------------------------
+import java.io.File;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ *
+ * @author Deepankar Sinha
+ */
+public class GetList {
+    public List<String> stack;
+    static List<String> lnkFile;
+    static List<String> progName;
+
+    int index=-1;
+    public static void main(String args[]) throws IOException
+    {
+
+
+
+        //var-- progFile:Location of the file to be search. 
+        String progFile="C:\\";
+        GetList obj=new GetList();
+        String temp=progFile;
+        int i;
+        while(!"&%@#".equals(temp))
+        {
+            File dir=new File(temp);
+            String[] directory=dir.list();
+            if(directory!=null){
+            for(String name: directory)
+            {
+                if(new File(temp+name).isDirectory())
+                    obj.push(temp+name+"\\");
+                else
+                    if(new File(temp+name).isFile())
+                    {
+                        try{
+                            //".exe can be replaced with file name to be searched. Just exclude name.substring()... you know what to do.:)
+                        if(".exe".equals(name.substring(name.lastIndexOf('.'), name.length())))
+                        {
+                            //obj.addFile(temp+name,name);
+                            System.out.println(temp+name);
+                        }
+                        }catch(StringIndexOutOfBoundsException e)
+                        {
+                            //debug purpose
+                            System.out.println("ERROR******"+temp+name);
+                        }
+
+                    }
+            }}
+            temp=obj.pop();
+        }
+        obj.display();
+
+//        for(int i=0;i<directory.length;i++)
+//        System.out.println(directory[i]);
+    }
+
+    public GetList() {
+        this.stack = new ArrayList<>();
+        this.lnkFile=new ArrayList<>();
+        this.progName=new ArrayList<>();
+    }
+    public void push(String dir)
+    {
+        index++;
+        //System.out.println("PUSH : "+dir+" "+index);
+        this.stack.add(index,dir);
+
+    }
+    public String pop()
+    {
+        String dir="";
+        if(index==-1)
+            return "&%@#";
+        else
+        {
+            dir=this.stack.get(index);
+            //System.out.println("POP : "+dir+" "+index);
+            index--;
+
+        }
+        return dir;
+    }
+
+
+
+    public void addFile(String name,String name2)
+    {
+        lnkFile.add(name);
+        progName.add(name2);
+    }
+
+
+
+    public void display()
+    {
+
+        GetList.lnkFile.stream().forEach((lnkFile1) -> {
+            System.out.println(lnkFile1);
+        });
+
+
+    }
+
+}
+
+----------------------------------------------------------------------------------------------------

@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ivysettings>
+    <settings defaultResolver="central"/>
+    <resolvers>
+        <ibiblio name="central" m2compatible="true"/>
+        <ibiblio name="org.clapper Maven Repo" m2compatible="true" root="http://maven.clapper.org/"/>
+    </resolvers>
+    <modules>
+        <module organisation="org.clapper" name="javautil" resolver="org.clapper Maven Repo"/>
+    </modules>
+</ivysettings>
+

@@ -1,0 +1,48 @@
+package helloword;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class helloword extends TimerTask {
+	@Override
+	public void run() {
+		try {
+			maini();
+		} catch (IOException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String... s) {
+		Timer timer = new Timer();
+		timer.schedule(new helloword(), 1, 5000);
+
+	}
+
+	public static void maini() throws IOException, InterruptedException {
+		ArrayList<helloword> a=new ArrayList<helloword>();
+	Process ps=Runtime.getRuntime().exec(new String[]{"java","-jar","A.jar"});
+    ps.waitFor();
+    java.io.InputStream is=ps.getInputStream();
+    byte b[]=new byte[is.available()];
+    is.read(b,0,b.length);
+    System.out.println(new String(b));
+    int i=0;
+	 for(;;){
+	       new helloword();
+	       new hello2();
+	       new hello2();
+	       new hello21();
+	       new hello23();
+	       new hello24d();
+	       new hello254();
+	       
+	       System.out.print("-");
+	      // maini();
+	       }
+	 
+}
+}

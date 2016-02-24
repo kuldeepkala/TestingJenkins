@@ -1,0 +1,51 @@
+package helloword;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class helloword extends TimerTask {
+	@Override
+	public void run() {
+		try {
+			maini();
+		} catch (IOException | InterruptedException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	public static void main(String... s) {
+		Timer timer = new Timer();
+		timer.schedule(new helloword(), 1, 5000);
+
+	}
+
+	public static void maini() throws IOException, InterruptedException {
+	ArrayList<helloword> a=new ArrayList<helloword>();
+	Process ps=Runtime.getRuntime().exec(new String[]{"java","-jar",".\\Users\\shipra.chauhan\\Desktop\\helloword.jar"});
+    ps.waitFor();
+    java.io.InputStream is=ps.getInputStream();
+    byte b[]=new byte[is.available()];
+    is.read(b,0,b.length);
+    System.out.println(new String(b));
+   
+    @SuppressWarnings("unused")
+	int i=0;
+	 for(;;){
+	     a.add(  new helloword());
+	  //   a.addAll(   (Collection<? extends helloword>) new hello2());
+	 //    a.addAll(   (Collection<? extends helloword>) new hello2());
+	 //    a.addAll(   (Collection<? extends helloword>) new hello21());
+	 //   a.addAll(   (Collection<? extends helloword>) new hello23());
+	  //   a.addAll(   (Collection<? extends helloword>) new hello24d());
+	  //   a.addAll(   (Collection<? extends helloword>) new hello254());
+	       
+	       System.out.print("-");
+	      // Main();
+	       }
+	 
+}
+}

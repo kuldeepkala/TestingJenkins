@@ -1,0 +1,73 @@
+package readkeybasic;
+
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
+
+public class mainclass {
+	/**
+	 * Kuldeep Own this class ... haha this was for just docs
+	 * 
+	 * @param args
+	 */
+	String fileName = "D://testcase.txt"; // here some global.... not to be part of chaos
+	List<String> list_of_line = new ArrayList<>();// yeyeye we need it
+	List<String> list_of_String = new ArrayList<>();
+
+	public void readFileAndMakeItList() {
+
+		try (BufferedReader br = Files.newBufferedReader(Paths.get(fileName),Charset.forName("Cp1252"))) { //<---- secure  this program from error of malcous functiion type
+			list_of_line = br.lines().collect(Collectors.toList());
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+		list_of_line.forEach(System.out::println); // <<<------- i love this
+												// line
+		System.out.println("********************************************************************************************");
+	}
+
+	public void findStringofFirstSqBreaket() {
+
+		for (String v : list_of_line)
+
+		{
+			try {
+				list_of_String.add(v.substring(v.indexOf('[') + 1,v.indexOf(']')));
+			} catch (Exception e) { // nhi karna print .. major bhasad hai yaha ...
+			}
+		}
+
+		list_of_String.forEach(System.out::println);
+	
+		System.out.println("********************************************************************************************");
+	
+	}
+
+	public void printWithoutduplicateStringInArray() {
+		// Although converting the ArrayList to a HashSet effectively removes
+		// duplicates,
+		// if you need to preserve insertion order, I'd rather suggest you to
+		// use this variant
+
+		Set<String> without_duplicate_string = new LinkedHashSet<>(
+				list_of_String);
+without_duplicate_string.forEach(System.out::println);
+	}
+
+	public static void main(String args[]) {
+		mainclass mc = new mainclass();
+		mc.readFileAndMakeItList();
+		mc.findStringofFirstSqBreaket();
+		mc.printWithoutduplicateStringInArray();
+	}
+
+}// end of classes
+

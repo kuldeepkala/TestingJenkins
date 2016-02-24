@@ -1,0 +1,77 @@
+void replaceRsa(int rowno,int columnno)throws ArrayIndexOutOfBoundsException
+	{
+	try {
+
+	for(int i=0; i<matrix.length; i++)
+	{			
+	    for(int j=0; j<matrix[0].length; j++) 
+	    {
+		    if(rowno!=0 && rowno!=row && columnno!=0 && columnno!=column )
+		  {
+			 if(matrix[row][column].equals(matrix[i][j]))
+			   {
+				if(i!=0 && i!=row && j!=0 && j!=column )
+				{
+				System.out.print("i am on ifif");
+				}
+				else
+				{
+			if(matrix[i+1][j]!=(matrix[rowno][columnno]))
+			{if(matrix[i-1][j]!=(matrix[rowno][columnno]))
+			{if(matrix[i][j+1]!=(matrix[rowno][columnno]))
+			{if(matrix[i][j-1]!=(matrix[rowno][columnno]))
+			{
+				System.out.println("------------------------------------>"+matrix[rowno][columnno]+"["+i+"]"+"["+j+"]");
+			}
+			}
+			}		
+			
+					
+		   }
+			else
+			{
+				System.out.print("i am on else");
+			}
+				}
+		 }
+		else
+		{
+			System.out.print("i am on edge");
+		}
+		
+	
+         		
+}	
+}
+				
+		}
+		} catch (Exception e) {
+					System.out.print(e.getMessage());
+				}
+}
+	
+	
+	
+	
+	
+	
+	________________________________________________---
+	
+	
+	
+	
+	if(i<0)//[0][0]
+		    	{
+		    		System.out.print(" underflow up");
+		    	}
+		    	if(i>=matrix.length)
+		    	{
+		    		System.out.print(" overflowed right"+i);
+		    	}
+		    	if(j>=matrix[0].length)
+		    	{
+		    		System.out.print(" overflow down"+j);
+		    	}
+		    	if(j==0)
+		    	{
+		    		System.out.print(" underflow left");
